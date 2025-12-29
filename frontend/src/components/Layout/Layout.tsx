@@ -16,7 +16,7 @@ function Layout({ children }: LayoutProps) {
   const isZh = language === 'zh'
 
   // 从localStorage获取用户信息
-  useEffect(() => {
+  const updateUsername = () => {
     const userStr = localStorage.getItem('user')
     if (userStr) {
       try {
@@ -25,6 +25,22 @@ function Layout({ children }: LayoutProps) {
       } catch (e) {
         console.error('Failed to parse user data:', e)
       }
+    }
+  }
+
+  useEffect(() => {
+    // 初始加载
+    updateUsername()
+
+    // 监听用户名更新事件
+    const handleUsernameUpdate = (event: CustomEvent) => {
+      setUsername(event.detail.username)
+    }
+
+    window.addEventListener('usernameUpdated', handleUsernameUpdate as EventListener)
+
+    return () => {
+      window.removeEventListener('usernameUpdated', handleUsernameUpdate as EventListener)
     }
   }, [])
 

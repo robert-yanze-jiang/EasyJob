@@ -197,6 +197,25 @@ function MyAccount() {
       if (response.success && response.data) {
         // 更新本地用户数据
         setUser(response.data.user)
+        
+        // 如果用户名已更新，同步更新 localStorage 并触发事件通知 Layout 组件
+        if (updateData.username) {
+          const userStr = localStorage.getItem('user')
+          if (userStr) {
+            try {
+              const userObj = JSON.parse(userStr)
+              userObj.username = response.data.user.username
+              localStorage.setItem('user', JSON.stringify(userObj))
+              // 触发自定义事件通知其他组件用户名已更新
+              window.dispatchEvent(new CustomEvent('usernameUpdated', {
+                detail: { username: response.data.user.username }
+              }))
+            } catch (e) {
+              console.error('Failed to update localStorage:', e)
+            }
+          }
+        }
+        
         setIsEditing(false)
         setEditForm({
           username: '',
