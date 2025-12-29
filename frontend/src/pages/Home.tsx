@@ -45,41 +45,55 @@ function Home() {
             </>
           )}
         </h2>
-        <div className="hero-content">
-          <div className="info-row">
-            <div className="info-item">
-              <strong>
-                {isZh ? '解锁功能：' : 'Function avaliable: '}
-              </strong>
-              {isZh ? (
-                <>
-                  <span className="highlight-text">项目润色</span> 和{' '}
-                  <span className="highlight-text">求职信</span>
-                </>
-              ) : (
-                <>
-                  <span className="highlight-text">Project Polish</span> and{' '}
-                  <span className="highlight-text">Cover Letter</span>
-                </>
-              )}
-            </div>
-            <div className="info-item">
-              <strong>{isZh ? '使用模型：' : 'Model used: '}</strong>
+        <div className="backend-status">
+          <span className={`status-indicator ${backendStatus}`}>
+            {backendStatus === 'checking' &&
+              (isZh ? '🔄 正在检查后端连接…' : '🔄 Checking backend...')}
+            {backendStatus === 'connected' &&
+              (isZh ? '✅ 已连接到服务器，可以开始使用了。' : '✅ Connected to the server, you can try now.')}
+            {backendStatus === 'disconnected' &&
+              (isZh ? '⚠️ 后端未连接' : '⚠️ Backend disconnected')}
+          </span>
+        </div>
+      </div>
+
+      <div className="info-section">
+        <div className="info-block">
+          <h3 className="info-title">
+            {isZh ? '可用功能：' : 'Available Functions:'}
+          </h3>
+          <ul className="info-list">
+            <li>{isZh ? '简历润色' : 'Resume Polish'}</li>
+            <li>{isZh ? '求职信生成器' : 'Cover Letter Generator'}</li>
+          </ul>
+        </div>
+
+        <div className="info-block">
+          <h3 className="info-title">
+            {isZh ? '技术详情：' : 'Technical Details:'}
+          </h3>
+          <div className="info-details">
+            <div className="detail-item">
+              <strong>{isZh ? '模型：' : 'Model: '}</strong>
               <span className="model-name">qwen3-plus</span>
             </div>
+            <div className="detail-item">
+              <strong>
+                {isZh ? '数据收集：' : 'Data Collected: '}
+              </strong>
+              {isZh
+                ? '邮箱地址、用户名（加密密码）、使用频率和 Token 消耗'
+                : 'Email address, username (encrypted password), usage frequency, and token consumption'}
+            </div>
           </div>
-          <div className="info-item">
-            <strong>{isZh ? '数据收集：' : 'Data collected: '}</strong>
-            {isZh
-              ? '您的邮箱地址、用户名、加密后的密码、各功能使用频率和 Token 消耗。'
-              : 'Your email address, username, encrypted password, usage frequency, and token consumption.'}
-          </div>
-          <div className="info-item">
+        </div>
+
+        <div className="info-block">
+          <h3 className="info-title">{isZh ? '关于我们：' : 'About Us:'}</h3>
+          <p className="about-text">
             {isZh ? (
               <>
-                <strong className="brand-name">EasyJob</strong> 由{' '}
-                <strong className="brand-name">robertyz666</strong> 于
-                2025年12月开发，如有建议，请发送至{' '}
+                EasyJob 由 robertyz666 独立开发，于 2025年12月发布。我们欢迎您的反馈和建议，请发送至{' '}
                 <span
                   className="email-link"
                   onClick={() => {
@@ -90,12 +104,13 @@ function Home() {
                 >
                   robertyanzejiang@outlook.com
                 </span>
+                。
               </>
             ) : (
               <>
-                <strong className="brand-name">EasyJob</strong> is developed by{' '}
-                <strong className="brand-name">robertyz666</strong> in Dec 2025,
-                any suggestions, please send to{' '}
+                EasyJob is independently developed by{' '}
+                <strong className="brand-name">robertyz666</strong> and launched
+                in December 2025. We welcome your feedback and suggestions at{' '}
                 <span
                   className="email-link"
                   onClick={() => {
@@ -106,24 +121,10 @@ function Home() {
                 >
                   robertyanzejiang@outlook.com
                 </span>
+                .
               </>
             )}
-          </div>
-          <div className="info-item">
-            <button className="tip-button">
-              {isZh ? '打赏创作者' : 'Tip the creator'}
-            </button>
-          </div>
-        </div>
-        <div className="backend-status">
-          <span className={`status-indicator ${backendStatus}`}>
-            {backendStatus === 'checking' &&
-              (isZh ? '🔄 正在检查后端连接…' : '🔄 Checking backend...')}
-            {backendStatus === 'connected' &&
-              (isZh ? '✅ 已连接到服务器，可以开始使用了。' : '✅ Connected to the server, you can try now.')}
-            {backendStatus === 'disconnected' &&
-              (isZh ? '⚠️ 后端未连接' : '⚠️ Backend disconnected')}
-          </span>
+          </p>
         </div>
       </div>
 
