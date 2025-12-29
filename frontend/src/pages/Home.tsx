@@ -34,15 +34,19 @@ function Home() {
         <p className="hero-description">
           {isZh ? (
             <>
-              使用 AI 来优化你的简历！试试 Qwen3-plus！！！
+              使用 AI 来优化你的简历！试试 <strong>Qwen3-plus</strong>！！！
               <br />
-              由 robertyz666 开发。已解锁项目润色和求职信功能！
+              由 robertyz666 开发。
+              <br />
+              已解锁<strong>项目润色</strong>和<strong>求职信</strong>功能！
             </>
           ) : (
             <>
-              Using AI to revise your CV! Try Qwen3-plus!!!
+              Using AI to revise your CV! Try <strong>Qwen3-plus</strong>!!!
               <br />
-              Developed by robertyz666. Already unlock Project Polish and Cover Letter!
+              Developed by robertyz666.
+              <br />
+              Already unlock <strong>Project Polish</strong> and <strong>Cover Letter</strong>!
             </>
           )}
         </p>
