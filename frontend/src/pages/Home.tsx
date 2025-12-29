@@ -62,10 +62,18 @@ function Home() {
           <h3 className="info-title">
             {isZh ? '可用功能：' : 'Available Functions:'}
           </h3>
-          <ul className="info-list">
-            <li>{isZh ? '简历润色' : 'Resume Polish'}</li>
-            <li>{isZh ? '求职信生成器' : 'Cover Letter Generator'}</li>
-          </ul>
+          <div className="info-details">
+            <div className="detail-item">
+              <strong>{isZh ? '功能：' : 'Function: '}</strong>
+              <span className="highlight-text">
+                {isZh ? '简历润色' : 'Resume Polish'}
+              </span>
+              {isZh ? '、' : ', '}
+              <span className="highlight-text">
+                {isZh ? '求职信' : 'Cover Letter'}
+              </span>
+            </div>
+          </div>
         </div>
 
         <div className="info-block">
@@ -125,6 +133,14 @@ function Home() {
               </>
             )}
           </p>
+          <div className="info-details" style={{ marginTop: '0.75rem' }}>
+            <div className="detail-item">
+              <strong>{isZh ? '打赏开发者：' : 'Tip developer: '}</strong>
+              <button className="tip-button">
+                {isZh ? '打赏开发者' : 'Tip developer'}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
