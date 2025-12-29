@@ -15,7 +15,14 @@ app.use('/api', routes)
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', message: 'EasyJob backend is running' })
+  res.json({ 
+    success: true,
+    data: { 
+      status: 'ok', 
+      message: 'EasyJob backend is running',
+      timestamp: new Date().toISOString(),
+    } 
+  })
 })
 
 // Start server

@@ -9,7 +9,8 @@
     "start": "node dist/server.js",
     "lint": "eslint src --ext .ts",
     "init-db": "ts-node src/db/init-db.ts",
-    "migrate": "ts-node src/db/run-migration.ts"
+    "migrate": "ts-node src/db/run-migration.ts",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "express": "^4.18.2",
